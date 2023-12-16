@@ -1,10 +1,8 @@
 {
-    "name": "Project._Scripts.Runtime.Managers",
+    "name": "Project._Scripts.Runtime.InGame",
     "rootNamespace": "",
     "references": [
-        "GUID:4307f53044263cf4b835bd812fc161a4",
-        "GUID:9835407d4d8bb6840834607d25f86b57",
-        "GUID:a15ec7a410f68cd48be5b8b2aa82bbfc"
+        "GUID:9835407d4d8bb6840834607d25f86b57"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
