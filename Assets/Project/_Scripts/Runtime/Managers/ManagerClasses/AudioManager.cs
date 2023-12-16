@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Project._Scripts.Runtime.InGame.Audio;
+using Project._Scripts.Runtime.ScriptableObjects.AudioData;
 using UnityEngine;
-public class AudioManager : MonoBehaviour
+
+namespace Project._Scripts.Runtime.Managers.ManagerClasses
+{
+    public class AudioManager : MonoBehaviour
     {
         #region Childs
 
@@ -246,3 +250,4 @@ public class AudioManager : MonoBehaviour
         #endregion
 
     }
+}

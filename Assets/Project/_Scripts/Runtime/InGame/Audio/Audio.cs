@@ -1,4 +1,6 @@
-﻿namespace Project._Scripts.Runtime.InGame.Audio
+﻿using Project._Scripts.Runtime.ScriptableObjects.AudioData;
+
+namespace Project._Scripts.Runtime.InGame.Audio
 {
   [System.Serializable]
   public class Audio

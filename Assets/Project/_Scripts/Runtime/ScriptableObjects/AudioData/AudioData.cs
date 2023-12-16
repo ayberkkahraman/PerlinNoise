@@ -1,24 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "AudioData", menuName = "Game/AudioData")]
-public class AudioData : ScriptableObject
+namespace Project._Scripts.Runtime.ScriptableObjects.AudioData
 {
-    #region Fields
-    [Header("Fields")]
-    public AudioClip AudioClip;
-    public AudioType Type;
-    public float Volume;
-    [Range(-.5f,.5f)]
-    public float PitchVariation;
-    public enum AudioType
+    [CreateAssetMenu(fileName = "AudioData", menuName = "Game/AudioData")]
+    public class AudioData : ScriptableObject
     {
-        BGM,
-        MainSfx,
-        SecondarySfx,
-        Ambient
-    }
+    #region Fields
+        [Header("Fields")]
+        public AudioClip AudioClip;
+        public AudioType Type;
+        public float Volume;
+        [Range(-.5f,.5f)]
+        public float PitchVariation;
+        public enum AudioType
+        {
+            BGM,
+            MainSfx,
+            SecondarySfx,
+            Ambient
+        }
     #endregion
+    }
 }
