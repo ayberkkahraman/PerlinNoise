@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 namespace Project._Scripts.Runtime.InGame.TileGenerator
 {
@@ -14,12 +14,10 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     public Vector2Int Size;
     public Vector2 Offset;
 
-    public AnimationCurve InitializeEase;
-
     private List<PerlinCube.PerlinCube> _cubes;
     
     [Range(.01f, 3f)][SerializeField] private float NoiseSpeed = 1f;
-    
+
     [MinMaxSlider(0f, 1f)]
     public Vector2 HeightBoundaries;
 
@@ -35,11 +33,20 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
 
       if (_cubes.Any())
       {
-        _cubes.ForEach(x => x.CubeUpdate(NoiseSpeed, HeightBoundaries));
+        _cubes.ForEach(x =>
+        {
+          if(x != null)
+            x.CubeUpdate(NoiseSpeed, HeightBoundaries);
+        });
       }
     }
-    
-    
+
+    #if UNITY_EDITOR
+    // private void OnValidate()
+    // {
+    //   GenerateTile();
+    // }
+    #endif
 
     public void GenerateTile()
     {
@@ -57,6 +64,7 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
           );
 
           PerlinCube.PerlinCube cube = Instantiate(PerlinCube, position, Quaternion.identity, CubesHolder);
+          cube.TraverseScale(NoiseSpeed, HeightBoundaries);
           _cubes.Add(cube);
         }
       }
