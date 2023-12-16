@@ -715,8 +715,8 @@ MonoBehaviour:
   PerlinCube: {fileID: 2050846054027944245, guid: 815a4c34077145f489b4c6afd4583a0e,
     type: 3}
   CubesHolder: {fileID: 487345563}
-  Size: {x: 150, y: 150}
-  Offset: {x: 0, y: 0}
+  Size: {x: 16, y: 16}
+  Offset: {x: 0.1, y: 0.1}
   InitializeEase:
     serializedVersion: 2
     m_Curve:
@@ -760,7 +760,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   NoiseSpeed: 1
-  HeightBoundaries: {x: 0.2, y: 1}
+  HeightBoundaries: {x: 0, y: 0.99999994}
 --- !u!4 &1693461962
 Transform:
   m_ObjectHideFlags: 0

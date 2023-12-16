@@ -20,7 +20,7 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     
     [Range(.01f, 3f)][SerializeField] private float NoiseSpeed = 1f;
     
-    [MinMaxSlider(.2f, 1f)]
+    [MinMaxSlider(0f, 1f)]
     public Vector2 HeightBoundaries;
 
     private void Start()
