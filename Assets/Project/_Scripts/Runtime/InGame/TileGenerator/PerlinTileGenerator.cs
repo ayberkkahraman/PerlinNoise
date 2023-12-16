@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -27,18 +29,13 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       
       GenerateTile();
     }
-    private void Update()
+    private void FixedUpdate()
     {
       if(Input.GetKeyDown(KeyCode.K)) GenerateTile();
-
-      if (_cubes.Any())
-      {
-        _cubes.ForEach(x =>
-        {
-          if(x != null)
-            x.CubeUpdate(NoiseSpeed, HeightBoundaries);
-        });
-      }
+      
+      if(_cubes.Any() == false)return;
+      
+      _cubes.ForEach(cube =>  cube.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time));
     }
 
     #if UNITY_EDITOR

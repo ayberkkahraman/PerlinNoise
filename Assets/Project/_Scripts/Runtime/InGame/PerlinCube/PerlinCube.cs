@@ -15,12 +15,14 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     
 
     private float _currentColorValue;
-    private float _targetHeight;
+    private float _perlinValue;
+    private float _perlinHeight;
 
     private Vector3 _defaultScale;
     private Vector3 _currentScale;
 
     private bool _ready;
+    private Color _currentColor;
 
     private void Start()
     {
@@ -32,44 +34,43 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
       
     }
     
-    public void CubeUpdate(float speed, Vector2 limits)
+    public void CubeUpdate(float speed, Vector2 limits, float time)
     {
-        UpdateScale(speed, limits);
+        UpdateScale(speed, limits, time);
         UpdateColor(limits);
     }
 
-    private void UpdateScale(float speed, Vector2 limits)
+    private void UpdateScale(float speed, Vector2 limits, float time)
     {
-      _targetHeight = HeightCalculation(speed, limits);
-      
+      CalculatePerlinHeight(speed, limits, time);
+
       _currentScale = transform.localScale;
-      _currentScale.y = _targetHeight;
+      _currentScale.y = _perlinHeight;
       transform.localScale = _currentScale;
     }
 
     private void UpdateColor(Vector2 limits)
     {
-      _currentColorValue = Mathf.Lerp(0.2f, 1f, (_targetHeight - limits.x) / (limits.y - limits.x));
+      _currentColorValue = Mathf.Lerp(0.2f, 1f, (_perlinHeight - limits.x) / (limits.y - limits.x));
       
-      Color currentColor = _material.color;
-      currentColor.r = _currentColorValue;
-      currentColor.g = _currentColorValue;
-      currentColor.b = _currentColorValue;
-      _material.color = currentColor;
+      _currentColor = _material.color;
+      _currentColor.r = _currentColorValue;
+      _currentColor.g = _currentColorValue;
+      _currentColor.b = _currentColorValue;
+      _material.color = _currentColor;
     }
 
-    private float HeightCalculation(float speed, Vector2 limits)
+    private void CalculatePerlinHeight(float speed, Vector2 limits, float time)
     {
-      float perlinValue = Mathf.PerlinNoise(Time.time * _perlinScale * speed, 0.0f);
-      float height = Mathf.Lerp(limits.x, limits.y, perlinValue);
-      return height;
+      _perlinValue = Mathf.PerlinNoise(time * _perlinScale * speed, 0.0f);
+      _perlinHeight = Mathf.Lerp(limits.x, limits.y, _perlinValue);
     }
 
     private void Initialize()
     {
       _meshRenderer = GetComponent<MeshRenderer>();
       _material = _meshRenderer.material;
-      _perlinScale = Random.Range(.01f, 1f);
+      _perlinScale = Random.Range(.1f, 1f);
     }
   }
 }
