@@ -1,0 +1,21 @@
+{
+    "name": "Project._Scripts.Runtime.Managers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:50e31f1a9ea9f334f95dcf50c88cc195",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:8bb96a371b59c6f40a665e98b6606b07",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:4c653bfe61374814d9aff83f82b91b19",
+        "GUID:d1a5c103371de8b44afabf4b8d8b5616"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
