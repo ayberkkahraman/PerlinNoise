@@ -212,7 +212,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 9.95
+  m_CameraDistance: 6.75
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -321,6 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237492477}
   - component: {fileID: 1237492476}
+  - component: {fileID: 1237492478}
   m_Layer: 0
   m_Name: StageCamera
   m_TagString: Untagged
@@ -350,7 +351,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1693461962}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: -6.31
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -376,13 +377,34 @@ Transform:
   m_GameObject: {fileID: 1237492475}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -4.9750004, y: 7.0357127, z: -4.9750004}
+  m_LocalPosition: {x: -3.3750002, y: 4.7729707, z: -3.3750002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 640839065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+--- !u!95 &1237492478
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237492475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c90bcb9e07fe0e4e938869f2c211595, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1281544455
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +574,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: -6.31
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -577,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 1440066284}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -4.9750004, y: 7.0357127, z: -4.9750004}
+  m_LocalPosition: {x: -3.3750002, y: 4.7729707, z: -3.3750002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -693,8 +715,8 @@ MonoBehaviour:
   PerlinCube: {fileID: 2050846054027944245, guid: 815a4c34077145f489b4c6afd4583a0e,
     type: 3}
   CubesHolder: {fileID: 487345563}
-  Size: {x: 6, y: 6}
-  Offset: {x: 0.1, y: 0.1}
+  Size: {x: 150, y: 150}
+  Offset: {x: 0, y: 0}
   InitializeEase:
     serializedVersion: 2
     m_Curve:

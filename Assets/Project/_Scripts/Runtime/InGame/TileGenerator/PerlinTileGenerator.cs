@@ -45,19 +45,18 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     {
       _cubes.ForEach(x => Destroy(x.gameObject));
       _cubes = new List<PerlinCube.PerlinCube>();
-
+      var cubeSize = PerlinCube.transform.localScale;
       for (int x = 0; x < Size.x; x++)
       {
         for (int y = 0; y < Size.y; y++)
         {
-          Vector2 position = new Vector2
-          (
-            x + (PerlinCube.transform.localScale.x / 2) + Offset.x*x - (Size.x / 2), 
-            y + (PerlinCube.transform.localScale.z / 2) + Offset.y*y - (Size.y / 2)
+          Vector3 position = new Vector3(
+            x * cubeSize.x - (Size.x * cubeSize.x * 0.5f) + Offset.x * x,
+            0f,
+            y * cubeSize.z - (Size.y * cubeSize.z * 0.5f) + Offset.y * y
           );
-          
-          Vector3 initialPosition = new Vector3(position.x, 0f, position.y);
-          PerlinCube.PerlinCube cube = Instantiate(PerlinCube, initialPosition, Quaternion.identity, CubesHolder);
+
+          PerlinCube.PerlinCube cube = Instantiate(PerlinCube, position, Quaternion.identity, CubesHolder);
           _cubes.Add(cube);
         }
       }
