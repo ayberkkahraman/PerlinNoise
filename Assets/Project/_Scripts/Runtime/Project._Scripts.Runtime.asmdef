@@ -1,3 +1,16 @@
 {
-	"name": "Project._Scripts.Runtime"
+    "name": "Project._Scripts.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:36e7fdbf22c7d4341861d3cedf98d5bb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
