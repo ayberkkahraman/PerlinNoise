@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Project._Scripts.Runtime.InGame.TileGenerator
@@ -23,27 +24,33 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     [MinMaxSlider(0f, 1f)]
     public Vector2 HeightBoundaries;
 
-    private void Start()
+    public float InternalDelay = .01f;
+
+    private async void Start()
     {
       _cubes = new List<PerlinCube.PerlinCube>();
       
       GenerateTile();
-    }
-    private void FixedUpdate()
-    {
-      if(Input.GetKeyDown(KeyCode.K)) GenerateTile();
       
-      if(_cubes.Any() == false)return;
-      
-      _cubes.ForEach(cube =>  cube.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time));
+      while (true)
+      {
+        await ExecuteEveryInterval(InternalDelay);
+      }
     }
 
-    #if UNITY_EDITOR
-    // private void OnValidate()
-    // {
-    //   GenerateTile();
-    // }
-    #endif
+    private async Task ExecuteEveryInterval(float interval)
+    {
+      Execute();
+      await Task.Delay(Mathf.RoundToInt(interval * 1000));
+    }
+    
+    private void Execute()
+    {
+      foreach (var t in _cubes.Where(t => t != null))
+      {
+        t.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time);
+      }
+    }
 
     public void GenerateTile()
     {
@@ -61,7 +68,7 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
           );
 
           PerlinCube.PerlinCube cube = Instantiate(PerlinCube, position, Quaternion.identity, CubesHolder);
-          cube.TraverseScale(NoiseSpeed, HeightBoundaries);
+      
           _cubes.Add(cube);
         }
       }

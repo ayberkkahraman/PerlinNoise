@@ -1,7 +1,10 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Project._Scripts.Runtime.InGame.PerlinCube
 {
@@ -24,7 +27,7 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     private bool _ready;
     private Color _currentColor;
 
-    private void Start()
+    private void Awake()
     {
       Initialize();
     }
@@ -51,9 +54,8 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
 
     private void UpdateColor(Vector2 limits)
     {
-      _currentColorValue = Mathf.Lerp(0.2f, 1f, (_perlinHeight - limits.x) / (limits.y - limits.x));
-      
-      _currentColor = _material.color;
+      _currentColorValue = math.lerp(0.2f, 1f, (_perlinHeight - limits.x) / (limits.y - limits.x));
+
       _currentColor.r = _currentColorValue;
       _currentColor.g = _currentColorValue;
       _currentColor.b = _currentColorValue;
@@ -63,14 +65,15 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     private void CalculatePerlinHeight(float speed, Vector2 limits, float time)
     {
       _perlinValue = Mathf.PerlinNoise(time * _perlinScale * speed, 0.0f);
-      _perlinHeight = Mathf.Lerp(limits.x, limits.y, _perlinValue);
+      _perlinHeight = math.lerp(limits.x, limits.y, _perlinValue);
     }
 
     private void Initialize()
     {
       _meshRenderer = GetComponent<MeshRenderer>();
       _material = _meshRenderer.material;
-      _perlinScale = Random.Range(.1f, 1f);
+      _material.enableInstancing = true;
+      _perlinScale = Random.Range(0f, 1f);
     }
   }
 }

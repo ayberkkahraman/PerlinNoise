@@ -466,7 +466,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d4bdcce4f6affa4caeb6839f1dc3793, type: 2}
+  - {fileID: 2100000, guid: b29a802633c057848b30135d5a8bacac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -715,10 +715,11 @@ MonoBehaviour:
   PerlinCube: {fileID: 2050846054027944245, guid: 815a4c34077145f489b4c6afd4583a0e,
     type: 3}
   CubesHolder: {fileID: 487345563}
-  Size: {x: 1, y: 1}
+  Size: {x: 50, y: 50}
   Offset: {x: 0, y: 0}
   NoiseSpeed: 1
-  HeightBoundaries: {x: 0.2, y: 1}
+  HeightBoundaries: {x: 0, y: 1}
+  InternalDelay: 0.02
 --- !u!4 &1693461962
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +788,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
