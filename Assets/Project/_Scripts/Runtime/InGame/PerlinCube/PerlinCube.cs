@@ -1,8 +1,10 @@
 ﻿using System;
 using DG.Tweening;
-using NaughtyAttributes;
+using Unity.Burst;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Jobs;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -27,6 +29,7 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     private bool _ready;
     private Color _currentColor;
 
+  
     private void Awake()
     {
       Initialize();
@@ -34,8 +37,8 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
 
     public void CubeUpdate(float speed, Vector2 limits, float time)
     {
-        UpdateScale(speed, limits, time);
-        UpdateColor(limits);
+        // UpdateScale(speed, limits, time);
+        // UpdateColor(limits);
     }
 
     private void UpdateScale(float speed, Vector2 limits, float time)
@@ -51,11 +54,9 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
       _perlinHeight = math.lerp(limits.x, limits.y, _perlinValue);
     }
 
-    private void UpdateColor(Vector2 limits)
+    public void UpdateColor(Vector2 limits, float value, float colorValue)
     {
-      _currentColorValue = Mathf.Lerp(0.2f, 1f, (_perlinHeight - limits.x) / (limits.y - limits.x));
-
-      _currentColor = new Color(_currentColorValue, _currentColorValue, _currentColorValue, 1);
+      _currentColor = new Color(colorValue, colorValue, colorValue, 1);
       _materialPropertyBlock.SetColor("_Color", _currentColor);
       _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
