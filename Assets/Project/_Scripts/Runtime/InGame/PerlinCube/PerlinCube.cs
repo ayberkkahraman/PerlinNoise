@@ -32,11 +32,6 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
       Initialize();
     }
 
-    public void TraverseScale(float speed, Vector2 limits)
-    {
-      
-    }
-    
     public void CubeUpdate(float speed, Vector2 limits, float time)
     {
         UpdateScale(speed, limits, time);
