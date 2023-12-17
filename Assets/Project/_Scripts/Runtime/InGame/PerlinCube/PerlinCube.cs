@@ -44,6 +44,12 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
 
       transform.localScale = new Vector3(transform.localScale.x, _perlinHeight, transform.localScale.z);
     }
+    
+    private void CalculatePerlinHeight(float speed, Vector2 limits, float time)
+    {
+      _perlinValue = Mathf.PerlinNoise(time * _perlinScale * speed, 0.0f);
+      _perlinHeight = math.lerp(limits.x, limits.y, _perlinValue);
+    }
 
     private void UpdateColor(Vector2 limits)
     {
@@ -54,11 +60,7 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
       _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
 
-    private void CalculatePerlinHeight(float speed, Vector2 limits, float time)
-    {
-      _perlinValue = Mathf.PerlinNoise(time * _perlinScale * speed, 0.0f);
-      _perlinHeight = math.lerp(limits.x, limits.y, _perlinValue);
-    }
+ 
 
     private void Initialize()
     {

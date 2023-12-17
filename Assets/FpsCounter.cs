@@ -14,7 +14,7 @@ public class FpsCounter : MonoBehaviour
         while (true)
         {
             _count = (int)(1f / Time.unscaledDeltaTime);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.02f);
             text.text = $"Fps : {_count}";
         }
     }

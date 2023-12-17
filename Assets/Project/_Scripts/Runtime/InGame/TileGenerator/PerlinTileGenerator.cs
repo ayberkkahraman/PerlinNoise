@@ -46,9 +46,9 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     
     private void Execute()
     {
-      foreach (var t in _cubes)
+      foreach (var cube in _cubes)
       {
-        t.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time);
+        cube.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time);
       }
     }
 
