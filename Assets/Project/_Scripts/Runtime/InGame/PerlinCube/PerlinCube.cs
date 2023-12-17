@@ -11,8 +11,8 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
   public class PerlinCube : MonoBehaviour
   {
     #region Components
-    private MeshRenderer _meshRenderer;
-    private Material _material;
+    private Renderer _renderer;
+    private MaterialPropertyBlock _materialPropertyBlock;
     #endregion
     private float _perlinScale = 1f;
     
@@ -42,19 +42,16 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     {
       CalculatePerlinHeight(speed, limits, time);
 
-      _currentScale = transform.localScale;
-      _currentScale.y = _perlinHeight;
-      transform.localScale = _currentScale;
+      transform.localScale = new Vector3(transform.localScale.x, _perlinHeight, transform.localScale.z);
     }
 
     private void UpdateColor(Vector2 limits)
     {
-      _currentColorValue = math.lerp(0.2f, 1f, (_perlinHeight - limits.x) / (limits.y - limits.x));
+      _currentColorValue = Mathf.Lerp(0.2f, 1f, (_perlinHeight - limits.x) / (limits.y - limits.x));
 
-      _currentColor.r = _currentColorValue;
-      _currentColor.g = _currentColorValue;
-      _currentColor.b = _currentColorValue;
-      _material.color = _currentColor;
+      _currentColor = new Color(_currentColorValue, _currentColorValue, _currentColorValue, 1);
+      _materialPropertyBlock.SetColor("_Color", _currentColor);
+      _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
 
     private void CalculatePerlinHeight(float speed, Vector2 limits, float time)
@@ -65,9 +62,8 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
 
     private void Initialize()
     {
-      _meshRenderer = GetComponent<MeshRenderer>();
-      _material = _meshRenderer.material;
-      _material.enableInstancing = true;
+      _materialPropertyBlock = new MaterialPropertyBlock();
+      _renderer = GetComponent<Renderer>();
       _perlinScale = Random.Range(0f, 1f);
     }
   }

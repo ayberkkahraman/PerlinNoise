@@ -19,9 +19,9 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
 
     private List<PerlinCube.PerlinCube> _cubes;
     
-    [Range(.01f, 3f)][SerializeField] private float NoiseSpeed = 1f;
+    [Range(.01f, 10f)][SerializeField] private float NoiseSpeed = 1f;
 
-    [MinMaxSlider(0f, 1f)]
+    [MinMaxSlider(0f, 2f)]
     public Vector2 HeightBoundaries;
 
     public float InternalDelay = .01f;
@@ -46,7 +46,7 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     
     private void Execute()
     {
-      foreach (var t in _cubes.Where(t => t != null))
+      foreach (var t in _cubes)
       {
         t.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time);
       }
