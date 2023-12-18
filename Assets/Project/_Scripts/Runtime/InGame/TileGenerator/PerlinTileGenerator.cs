@@ -27,8 +27,6 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     [MinMaxSlider(0f, 2f)]
     public Vector2 HeightBoundaries;
 
-    public float InternalDelay = .01f;
-
     private PerlinCubeJob _job;
     private JobHandle _jobHandle;
 
@@ -57,7 +55,6 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       {
         _job.ScaleValues[i] = CalculatePerlinHeight(i);
         UpdateCubeColor(_cubes[i], GetColorValue(i));
-        // _cubes[i].UpdateColor(HeightBoundaries, _job.ScaleValues[i], GetColorValue(i));
       }
       
       _jobHandle = _job.Schedule(_accessArray);
@@ -137,8 +134,9 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     public NativeArray<float> ScaleValues;
     public void Execute(int index, TransformAccess transform)
     {
-      var cubeTransform = transform;
-      cubeTransform.localScale = new Vector3(cubeTransform.localScale.x, ScaleValues[index], cubeTransform.localScale.z);
+      var newScale = transform.localScale;
+      newScale.y = ScaleValues[index];
+      transform.localScale = newScale;
     }
   }
 }

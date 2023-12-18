@@ -28,9 +28,7 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     private Vector3 _currentScale;
 
     private bool _ready;
-    
 
-  
     private void Awake()
     {
       Initialize();
