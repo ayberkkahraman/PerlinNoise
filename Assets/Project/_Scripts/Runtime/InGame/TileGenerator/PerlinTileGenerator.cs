@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using Unity.Burst;
@@ -23,7 +22,7 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     private List<PerlinCube.PerlinCube> _cubes;
     
     [Range(.01f, 10f)][SerializeField] private float NoiseSpeed = 1f;
-    private float[] _randomScales;
+    
 
     [MinMaxSlider(0f, 2f)]
     public Vector2 HeightBoundaries;
@@ -34,38 +33,34 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     private JobHandle _jobHandle;
 
     private Transform[] _cubeTransforms;
-    private NativeArray<float> _nativeValues;
+    
+    private NativeArray<float> _nativeScaleValues;
+    private NativeArray<float> _nativePerlinValues;
+    private float[] _randomScales;
     private TransformAccessArray _accessArray;
 
-    private void Start()
+    private void Awake()
     {
       _cubes = new List<PerlinCube.PerlinCube>();
+    }
+    private void Start()
+    {
       GenerateTile();
-      _cubeTransforms = new Transform[Size.x * Size.y];
-      _randomScales = new float[_cubeTransforms.Length];
-
-      for (int i = 0; i < _randomScales.Length; i++) _randomScales[i] = Random.Range(.2f, 2f);
-      
       _jobHandle = new JobHandle();
-    
-      for (int i = 0; i < _cubes.Count; i++) { _cubeTransforms[i] = _cubes[i].transform;}
-      
-      _nativeValues = new NativeArray<float>(_cubeTransforms.Length, Allocator.Persistent);
-      _accessArray = new TransformAccessArray(_cubeTransforms);
     }
 
     private void Update()
     {
-      _job.Values = _nativeValues;
+      _job.ScaleValues = _nativeScaleValues;
 
-      for (int i = 0; i < _nativeValues.Length; i++)
+      for (int i = 0; i < _nativeScaleValues.Length; i++)
       {
-        _job.Values[i] = CalculatePerlinHeight(i);
-        _cubes[i].UpdateColor(HeightBoundaries, _job.Values[i], GetColorValue(i));
+        _job.ScaleValues[i] = CalculatePerlinHeight(i);
+        UpdateCubeColor(_cubes[i], GetColorValue(i));
+        // _cubes[i].UpdateColor(HeightBoundaries, _job.ScaleValues[i], GetColorValue(i));
       }
       
       _jobHandle = _job.Schedule(_accessArray);
-      
     }
 
     private void LateUpdate()
@@ -73,28 +68,31 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       _jobHandle.Complete();
     }
     
-    private void Execute()
-    {
-      foreach (var cube in _cubes)
-      {
-        cube.CubeUpdate(NoiseSpeed, HeightBoundaries, Time.time);
-      }
-    }
-
     public float GetColorValue(int index)
     {
-      return math.lerp(0.2f, 1f, (_nativeValues[index] - HeightBoundaries.x) / (HeightBoundaries.y - HeightBoundaries.x));
+      return math.lerp(0.2f, 1f, (_nativeScaleValues[index] - HeightBoundaries.x) / (HeightBoundaries.y - HeightBoundaries.x));
+    }
+
+    public void UpdateCubeColor(PerlinCube.PerlinCube cube, float colorValue)
+    {
+      cube.CurrentColor = new Color(colorValue, colorValue, colorValue, 1);
+      cube.MaterialPropertyBlock.SetColor("_Color", cube.CurrentColor);
+      cube.Renderer.SetPropertyBlock(cube.MaterialPropertyBlock);
     }
 
     private float CalculatePerlinHeight(int index)
     {
-      var perlinValue = Mathf.PerlinNoise(Time.time * _randomScales[index] * NoiseSpeed, 0.0f);
+      var time = Time.time;
+      var perlinValue = Mathf.PerlinNoise(time * _randomScales[index] * NoiseSpeed, 0.0f);
       return math.lerp(HeightBoundaries.x, HeightBoundaries.y, perlinValue);
     }
+
     private void OnDestroy()
     {
-      _nativeValues.Dispose();
+      _nativeScaleValues.Dispose();
+      _nativePerlinValues.Dispose();
       _jobHandle.Complete();
+      _accessArray.Dispose();
     }
 
     public void GenerateTile()
@@ -117,17 +115,30 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
           _cubes.Add(cube);
         }
       }
+      
+      _cubeTransforms = new Transform[Size.x * Size.y];
+      _randomScales = new float[Size.x * Size.y];
+      
+      for (int i = 0; i < _cubes.Count; i++)
+      {
+        _cubeTransforms[i] = _cubes[i].transform;
+        _randomScales[i] = Random.Range(.2f, 2f);
+      }
+      
+      _nativeScaleValues = new NativeArray<float>(_cubeTransforms.Length, Allocator.Persistent);
+      _nativePerlinValues = new NativeArray<float>(_cubeTransforms.Length, Allocator.Persistent);
+      _accessArray = new TransformAccessArray(_cubeTransforms);
     }
   }
   
   [BurstCompile]
   public struct PerlinCubeJob : IJobParallelForTransform
   {
-    public NativeArray<float> Values;
-    public float2 HeightLimit;
+    public NativeArray<float> ScaleValues;
     public void Execute(int index, TransformAccess transform)
     {
-      transform.localScale = new Vector3(transform.localScale.x, Values[index], transform.localScale.z);
+      var cubeTransform = transform;
+      cubeTransform.localScale = new Vector3(cubeTransform.localScale.x, ScaleValues[index], cubeTransform.localScale.z);
     }
   }
 }

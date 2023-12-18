@@ -13,8 +13,9 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
   public class PerlinCube : MonoBehaviour
   {
     #region Components
-    private Renderer _renderer;
-    private MaterialPropertyBlock _materialPropertyBlock;
+    public Renderer Renderer { get; set; }
+    public MaterialPropertyBlock MaterialPropertyBlock { get; set; }
+    public Color CurrentColor{ get; set; }
     #endregion
     private float _perlinScale = 1f;
     
@@ -27,7 +28,7 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
     private Vector3 _currentScale;
 
     private bool _ready;
-    private Color _currentColor;
+    
 
   
     private void Awake()
@@ -56,17 +57,17 @@ namespace Project._Scripts.Runtime.InGame.PerlinCube
 
     public void UpdateColor(Vector2 limits, float value, float colorValue)
     {
-      _currentColor = new Color(colorValue, colorValue, colorValue, 1);
-      _materialPropertyBlock.SetColor("_Color", _currentColor);
-      _renderer.SetPropertyBlock(_materialPropertyBlock);
+      CurrentColor = new Color(colorValue, colorValue, colorValue, 1);
+      MaterialPropertyBlock.SetColor("_Color", CurrentColor);
+      Renderer.SetPropertyBlock(MaterialPropertyBlock);
     }
 
  
 
     private void Initialize()
     {
-      _materialPropertyBlock = new MaterialPropertyBlock();
-      _renderer = GetComponent<Renderer>();
+      MaterialPropertyBlock = new MaterialPropertyBlock();
+      Renderer = GetComponent<Renderer>();
       _perlinScale = Random.Range(0f, 1f);
     }
   }

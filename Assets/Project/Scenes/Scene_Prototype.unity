@@ -523,7 +523,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: -4.4
     NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FarClipPlane: 50
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -888,7 +888,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: -4.4
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 2
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1032,9 +1032,9 @@ MonoBehaviour:
   PerlinCube: {fileID: 2050846054027944245, guid: 815a4c34077145f489b4c6afd4583a0e,
     type: 3}
   CubesHolder: {fileID: 487345563}
-  Size: {x: 100, y: 100}
+  Size: {x: 200, y: 200}
   Offset: {x: 0, y: 0}
-  NoiseSpeed: 2
+  NoiseSpeed: 1
   HeightBoundaries: {x: 0, y: 2}
   InternalDelay: 0.02
 --- !u!4 &1693461962
