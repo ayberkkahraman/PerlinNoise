@@ -14,18 +14,16 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
 {
   public class PerlinTileGenerator : MonoBehaviour
   {
-    public PerlinCube.PerlinCube PerlinCube;
-    public Transform CubesHolder;
-    public Vector2Int Size;
-    public Vector2 Offset;
+    [SerializeField]private PerlinCube.PerlinCube PerlinCube;
+    [SerializeField]private Vector2Int Size;
+    [SerializeField]private Vector2 Offset;
 
     private List<PerlinCube.PerlinCube> _cubes;
     
     [Range(.01f, 10f)][SerializeField] private float NoiseSpeed = 1f;
     
-
     [MinMaxSlider(0f, 2f)]
-    public Vector2 HeightBoundaries;
+    [SerializeField]private Vector2 HeightBoundaries;
 
     private PerlinCubeJob _job;
     private JobHandle _jobHandle;
