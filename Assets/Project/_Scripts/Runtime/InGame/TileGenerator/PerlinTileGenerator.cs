@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using Project._Scripts.Runtime.Managers.BaseManager.ManagerContainer;
+using Project._Scripts.Runtime.Managers.ManagerClasses;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
@@ -110,6 +112,8 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
           _cubes.Add(cube);
         }
       }
+
+      ManagerContainer.Instance.GetInstance<CameraManager>().UpdateCameraDistance(_cubes[0].transform, _cubes[^1].transform);
       
       _cubeTransforms = new Transform[Size.x * Size.y];
       _randomScales = new float[Size.x * Size.y];

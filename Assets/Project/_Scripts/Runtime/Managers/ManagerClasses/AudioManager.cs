@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Project._Scripts.Runtime.InGame.Audio;
 using Project._Scripts.Runtime.ScriptableObjects.AudioData;
 using UnityEngine;
 
@@ -249,5 +248,12 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 
         #endregion
 
+    }
+    
+    [System.Serializable]
+    public class Audio
+    {
+        public string AudioName;
+        public AudioData AudioData;
     }
 }
