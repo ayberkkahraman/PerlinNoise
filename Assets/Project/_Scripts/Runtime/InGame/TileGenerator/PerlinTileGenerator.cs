@@ -113,8 +113,9 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
         }
       }
 
-      ManagerContainer.Instance.GetInstance<CameraManager>().UpdateCameraDistance(_cubes[0].transform, _cubes[^1].transform);
-      
+      var secondTransform = _cubes[0].transform == _cubes[^1].transform ? null : _cubes[^1].transform;
+      CameraManager.OnCameraChangeRequestHandler(_cubes[0].transform, secondTransform);
+
       _cubeTransforms = new Transform[Size.x * Size.y];
       _randomScales = new float[Size.x * Size.y];
       
