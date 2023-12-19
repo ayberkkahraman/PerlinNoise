@@ -7,6 +7,7 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
 {
   public class UIManager : MonoBehaviour
   {
+    
     [SerializeField] private Slider WidthSlider;
     [SerializeField] private Slider HeightSlider;
     [SerializeField] private Slider NoiseSpeedSlider;

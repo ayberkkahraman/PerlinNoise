@@ -23,6 +23,11 @@ namespace Project._Scripts.Runtime.InGame.UIElements.UIPanel
       _closePanelCallback = () => _animator.SetTrigger(Close);
     }
 
+    private void Update()
+    {
+      if(Input.GetKeyDown(KeyCode.Tab)) Interact();
+    }
+
     public void Interact()
     {
       if(!_isOpen) _openPanelCallback?.Invoke();
