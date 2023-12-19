@@ -2739,7 +2739,7 @@ Transform:
   m_GameObject: {fileID: 350227387}
   serializedVersion: 2
   m_LocalRotation: {x: -0.25000006, y: -0.25000006, z: 0.06698733, w: 0.9330127}
-  m_LocalPosition: {x: 0.43233776, y: 0.12409961, z: 3.7205777}
+  m_LocalPosition: {x: 0.43227243, y: 0.12402916, z: 3.7208226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2902,7 +2902,7 @@ Transform:
   m_GameObject: {fileID: 385526551}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.9859813, y: 4.82336, z: 6.2335443}
+  m_LocalPosition: {x: 3.7988973, y: -0.61465275, z: 12.028187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4590,7 +4590,7 @@ Transform:
   m_GameObject: {fileID: 589133288}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25000006, y: 0.25000006, z: -0.06698733, w: 0.9330127}
-  m_LocalPosition: {x: -0.030516956, y: -3.423824, z: 3.6055405}
+  m_LocalPosition: {x: 1.7833531, y: -8.864652, z: 9.403185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10137,7 +10137,7 @@ Transform:
   m_GameObject: {fileID: 1440066284}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.9859813, y: 4.82336, z: 6.2335443}
+  m_LocalPosition: {x: 3.7998831, y: -0.61765206, z: 12.031375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11909,6 +11909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f02a8234cd49b7badcac6c43bb645f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  _material: {fileID: 2100000, guid: b29a802633c057848b30135d5a8bacac, type: 2}
   PerlinCube: {fileID: 2050846054027944245, guid: 815a4c34077145f489b4c6afd4583a0e,
     type: 3}
   Size: {x: 1, y: 1}
@@ -13129,7 +13131,7 @@ Transform:
   m_GameObject: {fileID: 1780209881}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.9859813, y: 4.82336, z: 6.2335443}
+  m_LocalPosition: {x: 3.7998831, y: -0.61765206, z: 12.031375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14426,7 +14428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0.75
+  m_text: '1
 
 '
   m_isRightToLeft: 0

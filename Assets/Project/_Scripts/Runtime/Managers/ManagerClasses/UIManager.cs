@@ -17,14 +17,14 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
     
     public void SetWidthSlider(ref int value)
     {
-      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(WidthSlider.value * 100f), 1, 100);
+      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(WidthSlider.value * 200f), 1, 200);
       value = sliderValue;
       WidthText.text = $"{sliderValue}";
     }
     
     public void SetLengthSlider(ref int value)
     {
-      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(HeightSlider.value * 100f), 1, 100);
+      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(HeightSlider.value * 200f), 1, 200);
       value = sliderValue;
       HeightText.text = $"{sliderValue}";
     }

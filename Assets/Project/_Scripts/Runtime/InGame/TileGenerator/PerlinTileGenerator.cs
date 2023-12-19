@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using Project._Scripts.Runtime.Managers.BaseManager.ManagerContainer;
@@ -16,6 +17,13 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
 {
   public class PerlinTileGenerator : MonoBehaviour
   {
+    [SerializeField] private Mesh _mesh;
+    [SerializeField] private Material _material;
+
+    private NativeArray<Matrix4x4> _nativeMatrices;
+
+    private RenderParams _rp;
+    
     [SerializeField]private PerlinCube.PerlinCube PerlinCube;
     [SerializeField]private Vector2Int Size;
     [SerializeField]private Vector2 Offset;
@@ -31,7 +39,8 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     private JobHandle _jobHandle;
 
     private Transform[] _cubeTransforms;
-    
+
+    private NativeArray<float3> _nativePositions;
     private NativeArray<float> _nativeScaleValues;
     private NativeArray<float> _nativePerlinValues;
     private float[] _randomScales;
@@ -45,11 +54,15 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     {
       GenerateTile();
       _jobHandle = new JobHandle();
+
+      _rp = new RenderParams(_material);
     }
 
     private void Update()
     {
       _job.ScaleValues = _nativeScaleValues;
+      
+      _job.Matrices = _nativeMatrices;
 
       for (int i = 0; i < _nativeScaleValues.Length; i++)
       {
@@ -58,12 +71,15 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       }
       
       _jobHandle = _job.Schedule(_accessArray);
+      _jobHandle.Complete();
+      
+      Graphics.RenderMeshInstanced(_rp, _mesh, 0, _nativeMatrices);
     }
 
-    private void LateUpdate()
-    {
-      _jobHandle.Complete();
-    }
+    // private void LateUpdate()
+    // {
+    //   
+    // }
     
     public float GetColorValue(int index)
     {
@@ -117,14 +133,20 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       CameraManager.OnCameraChangeRequestHandler(_cubes[0].transform, secondTransform);
 
       _cubeTransforms = new Transform[Size.x * Size.y];
+      _nativeMatrices = new NativeArray<Matrix4x4>(_cubeTransforms.Length, Allocator.Persistent);
       _randomScales = new float[Size.x * Size.y];
+      
+      _nativePositions = new NativeArray<float3>(_cubeTransforms.Length, Allocator.Persistent);
       
       for (int i = 0; i < _cubes.Count; i++)
       {
+        _nativePositions[i] = _cubes[i].transform.position;
         _cubeTransforms[i] = _cubes[i].transform;
         _randomScales[i] = Random.Range(.2f, 2f);
       }
       
+      _job.Positions = _nativePositions;
+
       _nativeScaleValues = new NativeArray<float>(_cubeTransforms.Length, Allocator.Persistent);
       _nativePerlinValues = new NativeArray<float>(_cubeTransforms.Length, Allocator.Persistent);
       _accessArray = new TransformAccessArray(_cubeTransforms);
@@ -153,12 +175,17 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
   [BurstCompile]
   public struct PerlinCubeJob : IJobParallelForTransform
   {
+    public NativeArray<Matrix4x4> Matrices;
     public NativeArray<float> ScaleValues;
+    public NativeArray<float3> Positions;
     public void Execute(int index, TransformAccess transform)
     {
       var newScale = transform.localScale;
       newScale.y = ScaleValues[index];
       transform.localScale = newScale;
+
+      var pos = new Vector3(Positions[index].x, 0f, Positions[index].z);
+      Matrices[index] = Matrix4x4.TRS(pos, Quaternion.identity, newScale);
     }
   }
 }
