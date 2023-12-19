@@ -9,22 +9,32 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
   {
     [SerializeField] private Slider WidthSlider;
     [SerializeField] private Slider HeightSlider;
+    [SerializeField] private Slider NoiseSpeedSlider;
     [Space]
     [SerializeField] private TMP_Text WidthText;
     [SerializeField] private TMP_Text HeightText;
+    [SerializeField] private TMP_Text NoiseSpeedText;
     
-    public void SetWidthSlider(ref int widthValue)
+    public void SetWidthSlider(ref int value)
     {
       var sliderValue = Mathf.Clamp(Mathf.CeilToInt(WidthSlider.value * 100f), 1, 100);
-      widthValue = sliderValue;
+      value = sliderValue;
       WidthText.text = $"{sliderValue}";
     }
     
-    public void SetHeightSlider(ref int widthValue)
+    public void SetLengthSlider(ref int value)
     {
       var sliderValue = Mathf.Clamp(Mathf.CeilToInt(HeightSlider.value * 100f), 1, 100);
-      widthValue = sliderValue;
+      value = sliderValue;
       HeightText.text = $"{sliderValue}";
+    }
+
+    public void SetNoiseSpeedSlider(ref float value)
+    {
+      var currentSliderValue = NoiseSpeedSlider.value * 10f;
+      var sliderValue = Mathf.Clamp(currentSliderValue, 0, 10);
+      value = sliderValue;
+      NoiseSpeedText.text = $"{(double)currentSliderValue:F1}";
     }
     // [SerializeField]private UIPanel UIPanel;
     //

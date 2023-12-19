@@ -135,11 +135,18 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       ManagerContainer.Instance.GetInstance<UIManager>().SetWidthSlider(ref sizeX);
       Size.x = sizeX;
     }
-    public void SetHeight()
+    public void SetLength()
     {
       int sizeY = Size.y;
-      ManagerContainer.Instance.GetInstance<UIManager>().SetHeightSlider(ref sizeY);
+      ManagerContainer.Instance.GetInstance<UIManager>().SetLengthSlider(ref sizeY);
       Size.y = sizeY;
+    }
+
+    public void SetNoiseSpeed()
+    {
+      float speed = NoiseSpeed;
+      ManagerContainer.Instance.GetInstance<UIManager>().SetNoiseSpeedSlider(ref speed);
+      NoiseSpeed = speed;
     }
   }
   
