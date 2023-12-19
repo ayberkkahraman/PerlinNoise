@@ -129,6 +129,18 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
       _nativePerlinValues = new NativeArray<float>(_cubeTransforms.Length, Allocator.Persistent);
       _accessArray = new TransformAccessArray(_cubeTransforms);
     }
+    public void SetWidth()
+    {
+      int sizeX = Size.x;
+      ManagerContainer.Instance.GetInstance<UIManager>().SetWidthSlider(ref sizeX);
+      Size.x = sizeX;
+    }
+    public void SetHeight()
+    {
+      int sizeY = Size.y;
+      ManagerContainer.Instance.GetInstance<UIManager>().SetHeightSlider(ref sizeY);
+      Size.y = sizeY;
+    }
   }
   
   [BurstCompile]

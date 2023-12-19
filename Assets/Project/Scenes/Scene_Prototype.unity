@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 24005082}
   - component: {fileID: 24005081}
   m_Layer: 5
-  m_Name: Text_Size
+  m_Name: Text_WidthSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0df328e0c1260634a82394941305dab5, type: 2}
   m_sharedMaterial: {fileID: 6557454933389877748, guid: 0df328e0c1260634a82394941305dab5,
@@ -2608,6 +2608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500c86f8e52f473aae6ce29071f195ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WidthSlider: {fileID: 1191795018}
+  HeightSlider: {fileID: 1459887652}
+  WidthText: {fileID: 24005081}
+  HeightText: {fileID: 1268514939}
 --- !u!1 &350227387
 GameObject:
   m_ObjectHideFlags: 0
@@ -6681,7 +6685,7 @@ GameObject:
   - component: {fileID: 1191795017}
   - component: {fileID: 1191795018}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider_Width
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6756,7 +6760,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.661
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6764,6 +6768,19 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
         m_MethodName: set_normalizedValue
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1693461961}
+        m_TargetAssemblyTypeName: Project._Scripts.Runtime.InGame.TileGenerator.PerlinTileGenerator,
+          Project._Scripts.Runtime.InGame
+        m_MethodName: SetWidth
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7746,7 +7763,7 @@ GameObject:
   - component: {fileID: 1268514940}
   - component: {fileID: 1268514939}
   m_Layer: 5
-  m_Name: Text_Size
+  m_Name: Text_HeightSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7791,7 +7808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0df328e0c1260634a82394941305dab5, type: 2}
   m_sharedMaterial: {fileID: 6557454933389877748, guid: 0df328e0c1260634a82394941305dab5,
@@ -9211,7 +9228,7 @@ GameObject:
   - component: {fileID: 1459887651}
   - component: {fileID: 1459887652}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider_Height
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9286,7 +9303,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.661
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9294,6 +9311,19 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
         m_MethodName: set_normalizedValue
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1693461961}
+        m_TargetAssemblyTypeName: Project._Scripts.Runtime.InGame.TileGenerator.PerlinTileGenerator,
+          Project._Scripts.Runtime.InGame
+        m_MethodName: SetHeight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11328,7 +11358,7 @@ GameObject:
   - component: {fileID: 1766309681}
   - component: {fileID: 1766309680}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text_Generate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11899,7 +11929,7 @@ GameObject:
   - component: {fileID: 1866979245}
   - component: {fileID: 1866979244}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Generate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11988,7 +12018,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1866979246}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1693461961}
+        m_TargetAssemblyTypeName: Project._Scripts.Runtime.InGame.TileGenerator.PerlinTileGenerator,
+          Project._Scripts.Runtime.InGame
+        m_MethodName: GenerateTile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1866979246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13775,13 +13818,18 @@ PrefabInstance:
     - target: {fileID: 3636583969041756774, guid: 651a4d365b7eedd44a6f7d7b3d09f677,
         type: 3}
       propertyPath: Managers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3636583969041756774, guid: 651a4d365b7eedd44a6f7d7b3d09f677,
         type: 3}
       propertyPath: Managers.Array.data[1]
       value: 
       objectReference: {fileID: 1817044388}
+    - target: {fileID: 3636583969041756774, guid: 651a4d365b7eedd44a6f7d7b3d09f677,
+        type: 3}
+      propertyPath: Managers.Array.data[2]
+      value: 
+      objectReference: {fileID: 342050821}
     - target: {fileID: 7004000631557381893, guid: 651a4d365b7eedd44a6f7d7b3d09f677,
         type: 3}
       propertyPath: m_Name
