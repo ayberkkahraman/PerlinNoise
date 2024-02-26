@@ -37,14 +37,5 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
       value = sliderValue;
       NoiseSpeedText.text = $"{(double)currentSliderValue:F1}";
     }
-    // [SerializeField]private UIPanel UIPanel;
-    //
-    // private void Update()
-    // {
-    //   if (Input.GetKeyDown(KeyCode.Tab))
-    //   {
-    //     UIPanel.Interact();
-    //   }
-    // }
   }
 }

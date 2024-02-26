@@ -57,7 +57,6 @@ namespace Project._Scripts.Runtime.InGame.TileGenerator
     }
     private void Start()
     {
-      // ToggleColor();
       GenerateTile();
       _jobHandle = new JobHandle();
 
