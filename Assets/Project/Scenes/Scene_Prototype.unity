@@ -774,7 +774,7 @@ Transform:
   m_GameObject: {fileID: 350227387}
   serializedVersion: 2
   m_LocalRotation: {x: -0.25000006, y: -0.25000006, z: 0.06698733, w: 0.9330127}
-  m_LocalPosition: {x: 0.4321016, y: 0.12412453, z: 3.72168}
+  m_LocalPosition: {x: 0.4318632, y: 0.124331, z: 3.7220376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -937,7 +937,7 @@ Transform:
   m_GameObject: {fileID: 385526551}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 19.35254, y: -44.702595, z: 62.88137}
+  m_LocalPosition: {x: 20.766245, y: -48.53193, z: 67.67124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1802,7 +1802,7 @@ Transform:
   m_GameObject: {fileID: 589133288}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25000006, y: 0.25000006, z: -0.06698733, w: 0.9330127}
-  m_LocalPosition: {x: 17.336998, y: -52.952587, z: 60.256355}
+  m_LocalPosition: {x: 18.750704, y: -56.781918, z: 65.046234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4225,7 +4225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1281544456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4722,7 +4722,7 @@ Transform:
   m_GameObject: {fileID: 1440066284}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 19.353775, y: -44.705944, z: 62.88533}
+  m_LocalPosition: {x: 20.76748, y: -48.53528, z: 67.67568}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5971,7 +5971,7 @@ Transform:
   m_GameObject: {fileID: 1780209881}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 19.353775, y: -44.705944, z: 62.88533}
+  m_LocalPosition: {x: 20.76748, y: -48.53528, z: 67.67568}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
