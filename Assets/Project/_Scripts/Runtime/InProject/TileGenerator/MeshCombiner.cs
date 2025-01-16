@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Project._Scripts.Runtime.InGame.TileGenerator
+namespace Project._Scripts.Runtime.InProject.TileGenerator
 {
   public class MeshCombiner : MonoBehaviour
   {

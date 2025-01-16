@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Project._Scripts.Runtime.InGame.UIElements.Cursor
+
+namespace Project._Scripts.Runtime.InProject.UIElements.Cursor
 {
     public class Cursor : MonoBehaviour
     {

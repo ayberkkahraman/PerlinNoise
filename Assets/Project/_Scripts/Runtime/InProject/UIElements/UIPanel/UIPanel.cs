@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Project._Scripts.Runtime.InGame.UIElements.UIPanel
+namespace Project._Scripts.Runtime.InProject.UIElements.UIPanel
 {
   public class UIPanel : MonoBehaviour
   {

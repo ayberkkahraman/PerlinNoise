@@ -11,7 +11,7 @@ using UnityEngine.Jobs;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Project._Scripts.Runtime.InGame.TileGenerator
+namespace Project._Scripts.Runtime.InProject.TileGenerator
 {
   public class PerlinTileGenerator : MonoBehaviour
   {

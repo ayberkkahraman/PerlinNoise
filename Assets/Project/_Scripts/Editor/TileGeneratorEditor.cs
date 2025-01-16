@@ -1,4 +1,4 @@
-﻿using Project._Scripts.Runtime.InGame.TileGenerator;
+﻿using Project._Scripts.Runtime.InProject.TileGenerator;
 using UnityEditor;
 using UnityEngine;
 

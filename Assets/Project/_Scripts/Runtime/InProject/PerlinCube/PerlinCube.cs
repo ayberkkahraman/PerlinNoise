@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Project._Scripts.Runtime.InGame.PerlinCube
+namespace Project._Scripts.Runtime.InProject.PerlinCube
 {
   public class PerlinCube : MonoBehaviour
   {
