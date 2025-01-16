@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,14 +17,14 @@ namespace Project._Scripts.Runtime.Managers.ManagerClasses
     
     public void SetWidthSlider(ref int value)
     {
-      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(WidthSlider.value * 200f), 1, 200);
+      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(WidthSlider.value * 150f), 1, 150);
       value = sliderValue;
       WidthText.text = $"{sliderValue}";
     }
     
     public void SetLengthSlider(ref int value)
     {
-      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(HeightSlider.value * 200f), 1, 200);
+      var sliderValue = Mathf.Clamp(Mathf.CeilToInt(HeightSlider.value * 150f), 1, 150);
       value = sliderValue;
       HeightText.text = $"{sliderValue}";
     }

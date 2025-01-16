@@ -21,6 +21,8 @@ namespace Project._Scripts.Runtime.InGame.UIElements.UIPanel
       
       _openPanelCallback = () => _animator.SetTrigger(Open);
       _closePanelCallback = () => _animator.SetTrigger(Close);
+      
+      Interact();
     }
 
     private void Update()
